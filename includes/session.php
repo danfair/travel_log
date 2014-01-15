@@ -2,7 +2,7 @@
 
 class Session {
 
-	private $logged_in;
+	public $logged_in;
 	public $user_id;
 	private $email_message;
 
@@ -60,6 +60,12 @@ class Session {
 		else {
 			if ($user_row["password"] == $password) {
 				$this->login($username);
+				$file = "../logs/user_logins.txt";
+				$content = $username . ", " . date("Y-m-d h:i:s A e") . "\r\n";
+				if ($handle = fopen($file, 'a')) {
+					fwrite($handle, $content);
+					fclose($handle);
+				}
 				redirect_to("admin.php");
 			}
 			else {

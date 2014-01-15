@@ -64,7 +64,7 @@ class Photograph extends DatabaseObject {
 		$sql .= "post_no, caption, file_path, file_type) ";
 		$sql .= "VALUES (";
 		$sql .= $this->post_id . ", 'This is the caption', '" . $this->filename . "', '" . $this->type . "')";
-		// caption hard-coded for convenience, since there's no way to edit it later in the CMS
+		// caption hard-coded for learning convenience, since there's no way to edit it later in the CMS
 		
 		$result = $database->query($sql);
 		if ($result) {

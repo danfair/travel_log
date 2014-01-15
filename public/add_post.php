@@ -53,8 +53,8 @@
 		</div>
 		<div class="row">
 			<div class="small-12 columns">
-				<input type="hidden" name="MAX_FILE_SIZE" value="2,100,000" />
-				<label for"file_upload">Add a picture:</label>
+				
+				<label for"file_upload">Add a picture (must be JPG or PNG, 2MB limit):</label>
 				<input type="file" name="file_upload" />
 			</div>
 		</div>

@@ -24,7 +24,7 @@
 	<h2>Blog posts</h2>
 	<?php
 		if (isset($_SESSION["success_message"])) {
-			echo "<div data-alert class="alert-box success radius">";
+			echo "<div data-alert class=\"alert-box success radius\">";
 			echo $_SESSION["success_message"];
 			echo "</div>";
 			unset($_SESSION["success_message"]);

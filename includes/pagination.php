@@ -32,6 +32,34 @@ class Pagination {
 	public function has_next_page() {
 		return $this->next_page() <= $this->total_pages() ? true : false;
 	}
+
+	public function generate_pagination_footer() {
+		echo "<div class=\"pagination-centered\"><ul class=\"pagination\">";
+		echo "<li class=\"arrow\"><a href=\"index.php\">&laquo;</a></li>";
+		if ($this->has_previous_page()) {
+			$start_point = $this->current_page - 3;
+			if ($start_point <= 0) {
+				$start_point = 1;
+			}
+			for ($i = $start_point; $i < $this->current_page; $i++) {
+				echo "<li><a href=\"index.php?page=" . $i . "\">" . $i . "</a></li>";
+			}
+		}
+
+		// if ($this->current_page > 1) {
+		// 	for ($i = $this->current_page - 1; $i > 0; $i--) {
+		// 	echo "<li><a href=\"index.php?page=" . $i . "\">" . $i . "</a></li>";
+		// 	}
+		// }
+		echo "<li class=\"current\"><a href=\"\">" . $this->current_page . "</a></li>";
+		if ($this->total_pages() > $this->current_page) {
+			for ($i = $this->current_page + 1; $i <= $this->total_pages() && $i < $this->current_page + 3; $i++) {
+				echo "<li><a href=\"index.php?page=" . $i . "\">" . $i . "</a></li>";
+			}
+		}
+		echo "<li class=\"arrow\"><a href=\"index.php?page=" . $this->total_pages() . "\">&raquo;</a></li>";
+		echo "</ul></div>";
+	}
 }
 
 

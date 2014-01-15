@@ -7,7 +7,7 @@ if (isset($_POST["submit"]) && $session->logged_in == true) {
 		$post = new Post();
 		$post->title = $database->sanitize($_POST["title"]);
 
-		$author = $database->sanitize($_POST["author"])
+		$author = $database->sanitize($_POST["author"]);
 		$post->author_id = User::get_author_id_by_name($author);
 
 		$category_name = $database->sanitize($_POST["category"]);
@@ -19,28 +19,24 @@ if (isset($_POST["submit"]) && $session->logged_in == true) {
 
 		$result = $post->add_post();
 		if ($result) {
-			if (isset($_FILES["file_upload"])) {
+			if ($_FILES["file_upload"]["error"] != UPLOAD_ERR_NO_FILE) {
 				if ($_FILES["file_upload"]["error"] == 0) {
 					$tmp_name = $_FILES["file_upload"]["tmp_name"];
 					$target_file = basename($_FILES["file_upload"]["name"]);
 					$upload_dir = "img";
-					$exists = file_exists($upload_dir . $target_file);
-					for ($i = 1, $exists == true; $i++) {
-						$target_file .= $i;
-						$exists = file_exists($upload_dir . $target_file);
-					}
-					if ($_FILES["file_upload"]["type"] == "image/jpg" || $_FILES["file_upload"]["type"] == "image/png") {
-						if (move_uploaded_file($tmp_file, $upload_dir . "/" . $target_file)) {
+					if ($_FILES["file_upload"]["type"] == "image/jpg" || $_FILES["file_upload"]["type"] == "image/png" || $_FILES["file_upload"]["type"] == "image/jpeg") {
+						if (move_uploaded_file($tmp_name, $upload_dir . "/" . $target_file)) {
 							$photo = new Photograph();
 							$photo->filename = $target_file;
 							$photo->post_id = Post::get_post_id_by_title($post->title);
 							$photo->type = $_FILES["file_upload"]["type"];
 							$photo->add_photo();
-							$_SESSION["success_message"] = "Post and "
+							$_SESSION["success_message"] = "Post and photo added successfully.";
+							redirect_to("admin.php");
 						}
 					}
 					else {
-						$_SESSION["error_message"] = "Sorry, the file must be PNG or JPG.";
+						$_SESSION["error_message"] = "Sorry, the file must be PNG or JPG. Yours: " . $_FILES["file_upload"]["type"];
 						redirect_to("add_post.php");
 					}
 				}

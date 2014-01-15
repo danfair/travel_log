@@ -65,14 +65,15 @@
 		echo "<span class=\"label [round-radius]\">" . $post->category . "</span>";
 		echo "<a href=\"posts.php?post_id=" . $post->post_id . "\" class=\"right\">See post...</a></div><br />";
 	}
-	echo "<ul class=\"button-group right\">";
-	if ($pagination->has_previous_page()) {
-		echo "<li><a href=\"index.php?page=" . $pagination->previous_page() . "\" class=\"button tiny right\"><< Previous page</a></li>"; 
-	}
-	if ($pagination->has_next_page()) {
-		echo "<li><a href=\"index.php?page=" . $pagination->next_page() . "\" class=\"button tiny right\">Next page >></a></li>"; 
-	}
-	echo "</ul><br />";
+	// echo "<ul class=\"button-group right\">";
+	// if ($pagination->has_previous_page()) {
+	// 	echo "<li><a href=\"index.php?page=" . $pagination->previous_page() . "\" class=\"button tiny right\"><< Previous page</a></li>"; 
+	// }
+	// if ($pagination->has_next_page()) {
+	// 	echo "<li><a href=\"index.php?page=" . $pagination->next_page() . "\" class=\"button tiny right\">Next page >></a></li>"; 
+	// }
+	// echo "</ul><br />";
+	$pagination->generate_pagination_footer();
 ?>
 </div><!-- end of postarea div-->
 <?php

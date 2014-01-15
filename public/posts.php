@@ -28,7 +28,9 @@
 <?php 
 	echo "<h2>" . $post->title . "</h2>";
 	echo "<h4>By " . $post->author . ",  " . $post->date . "</h4>";
-	echo "<div style=\"float:left;width:300;padding:10;\"><img src=\"img/" . $photo->filename . "\" /><br /><p style=\"font-style:italic;\">" . $photo->caption . "</p></div>";
+	if (!empty($photo->filename)) {
+		echo "<div style=\"float:left;width:300;padding:10;\"><img src=\"img/" . $photo->filename . "\" /><br /><p style=\"font-style:italic;\">" . $photo->caption . "</p></div>";
+	}
 	echo "<div><p>" . $post->content . "</p></div>";
 ?>
 </div><!-- end of postarea div-->

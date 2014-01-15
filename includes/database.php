@@ -25,8 +25,12 @@ class MySQLDatabase {
 
 	public function query($sql) {
 		$result = mysqli_query($this->connection, $sql);
-		$this->confirm_query($result);
-		return $result;
+		if (!$result) {
+			die ("Database connection failed. SQL: " . $sql);
+		}
+		else {
+			return $result;
+		}
 	}
 
 	private function confirm_query($result) {
