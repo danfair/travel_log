@@ -36,8 +36,8 @@
 					echo "</a></li>";
 				}
 		if ($session->is_logged_in()) {
-			echo "<li><a href=\"admin.php\"><span style=\"color:orange\">Admin area</span></a></li>";
-			echo "<li><a href=\"logout.php\"><span style=\"color:orange\">Logout</span></a></li>";
+			echo "<li><a href=\"admin.php\"><span style=\"color:orange\"><strong>Admin area</strong></span></a></li>";
+			echo "<li><a href=\"logout.php\"><span style=\"color:orange\"><strong>Logout</strong></span></a></li>";
 		}
 		?>
 		</ul>

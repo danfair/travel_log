@@ -38,6 +38,23 @@ class User extends DatabaseObject{
 		return $array;
 	}
 
+	public static function get_author_id_by_name($name) {
+		global $database;
+		$sql = "SELECT * FROM users ";
+		$sql .= "WHERE first_name= '" . $name . "' ";
+		$sql .= "LIMIT 1";
+		$result = $database->query($sql);
+		if ($result) {
+			$row = $database->fetch_array($result);
+			$user_id = $row["id"];
+		}
+		else {
+			die("Author/user database error.");
+		}
+
+		return $user_id;
+	}
+
 }
 
 ?>

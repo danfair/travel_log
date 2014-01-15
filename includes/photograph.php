@@ -8,9 +8,10 @@ class Photograph extends DatabaseObject {
 	public $type;
 	public $size;
 	public $caption;
+	public $post_id;
 
 	private $temp_path;
-	protected $upload_dir = "images";
+	protected $upload_dir = "img";
 	public $errors = array();
 	
 	public function attach_file($file) {
@@ -55,6 +56,23 @@ class Photograph extends DatabaseObject {
 		$photo->filename = $row["file_path"];
 		$photo->caption = $row["caption"];
 		return $photo;
+	}
+
+	public function add_photo() {
+		global $database;
+		$sql = "INSERT INTO photos (";
+		$sql .= "post_no, caption, file_path, file_type) ";
+		$sql .= "VALUES (";
+		$sql .= $this->post_id . ", 'This is the caption', '" . $this->filename . "', '" . $this->type . "')";
+		// caption hard-coded for convenience, since there's no way to edit it later in the CMS
+		
+		$result = $database->query($sql);
+		if ($result) {
+			return true;
+		}
+		else {
+			die("Did not add post, database error.");
+		}
 	}
 
 }

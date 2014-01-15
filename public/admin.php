@@ -22,6 +22,14 @@
 		echo "</div>";
 	?>
 	<h2>Blog posts</h2>
+	<?php
+		if (isset($_SESSION["success_message"])) {
+			echo "<div data-alert class="alert-box success radius">";
+			echo $_SESSION["success_message"];
+			echo "</div>";
+			unset($_SESSION["success_message"]);
+		}
+	?>
 	<a href="add_post.php" class="button small">+ Add a post</a>
 	<table style="width:100%;">
 		<thead>

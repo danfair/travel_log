@@ -22,6 +22,23 @@ class Category extends DatabaseObject {
 		}
 		return $categories_array;
 	}
+
+	public static function get_category_id_by_name($name) {
+		global $database;
+		$sql = "SELECT * FROM categories ";
+		$sql .= "WHERE category_name= '" . $name . "' ";
+		$sql .= "LIMIT 1";
+		$result = $database->query($sql);
+		if ($result) {
+			$row = $database->fetch_array($result);
+			$category_id = $row["category_id"];
+		}
+		else {
+			die("Category database error.");
+		}
+
+		return $category_id;
+	}
 }
 
 ?>

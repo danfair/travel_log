@@ -95,6 +95,33 @@ class Post extends DatabaseObject {
 		$post->post_id = $row["post_id"];
 		return $post;
 	}
+
+	public function add_post() {
+		global $database;
+		$sql = "INSERT INTO posts (";
+		$sql .= "post_title, user_id, date, category_id, visible, content) ";
+		$sql .= "VALUES (";
+		$sql .="'" . $this->title . "', '" . $this->author_id . "', '" . $this->date . "', '" . $this->category . "', 1, '" . $this->content "')";
+		// visible hard-coded for convenience, since there's no way to edit it later in the CMS
+		
+		$result = $database->query($sql);
+		if ($result) {
+			return true;
+		}
+		else {
+			die("Did not add post, database error.");
+		}
+	}
+
+	public static function get_post_id_by_title($title) {
+		global $database;
+		$sql = "SELECT * FROM posts ";
+		$sql .= "WHERE post_title='" . $title . "; ";
+		$sql .= "LIMIT 1";
+		$result = $database->query($sql);
+		$row = $database->fetch_array($result);
+		return $row["post_id"];
+	}
 }
 
 

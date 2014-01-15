@@ -4,7 +4,13 @@
 ?>
 <div class="small-8 columns small-offset-2">
 <h2>Add a post</h2>
-<form action="process_post.php" method="post">
+<?php
+	if (!empty($_SESSION["error_message"])) {
+		echo "<p style=\"color:red\">" . $_SESSION["error_message"] . "</p>";
+		unset($_SESSION["error_message"]);
+	}
+?>
+<form action="process_post.php" enctype="multipart/form-data" method="post">
 		<div class="row">
 			<div class="small-12 columns">
 				<label for="title">Title of Post: </label>
@@ -33,7 +39,7 @@
 						if ($session->user_id == $author->username) { 
 							echo " selected"; 
 						}
-			 			echo ">" . $author->first_name . " " . $author->last_name . "</option>";
+			 			echo ">" . $author->first_name . "</option>";
 					}
 				?>
 				</select>
