@@ -23,7 +23,7 @@
 				$mail->Port = '25';
 				$mail->SMTPAuth = true;
 				$mail->Username = 'fair.dan@outlook.com';
-				$mail->Password = 'hoo8sier4';
+				$mail->Password = '######';
 				$mail->SMTPSecure = 'tls';
 
 				$mail->From = $from_address;
