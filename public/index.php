@@ -14,10 +14,11 @@
 <div class="panel small-3 columns">
 	<h3>Get email updates</h3> 
 		<p>Enter your email address below to get an email everytime this blog is updated.</p> 
-		<?php if(isset($_SESSION["email_message"])) {
-			echo "<p style=\"color:red\">" . $session->get_email_message() . "</p>";
-			unset($_SESSION["email_message"]);
-		}
+		<?php 
+			if(isset($_SESSION["email_message"])) {
+				echo "<p style=\"color:red\">" . $session->get_email_message() . "</p>";
+				unset($_SESSION["email_message"]);
+			}
 		?>
 	<form action="email_signup.php" method="POST">
 	  	<div class="row">
@@ -65,14 +66,6 @@
 		echo "<span class=\"label [round-radius]\">" . $post->category . "</span>";
 		echo "<a href=\"posts.php?post_id=" . $post->post_id . "\" class=\"right\">See post...</a></div><br />";
 	}
-	// echo "<ul class=\"button-group right\">";
-	// if ($pagination->has_previous_page()) {
-	// 	echo "<li><a href=\"index.php?page=" . $pagination->previous_page() . "\" class=\"button tiny right\"><< Previous page</a></li>"; 
-	// }
-	// if ($pagination->has_next_page()) {
-	// 	echo "<li><a href=\"index.php?page=" . $pagination->next_page() . "\" class=\"button tiny right\">Next page >></a></li>"; 
-	// }
-	// echo "</ul><br />";
 	$pagination->generate_pagination_footer();
 ?>
 </div><!-- end of postarea div-->

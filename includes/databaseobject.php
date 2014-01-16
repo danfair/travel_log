@@ -32,7 +32,6 @@ class DatabaseObject {
 			die("Database find by id error.");
 		}
 	}
-
 }
 
 ?>

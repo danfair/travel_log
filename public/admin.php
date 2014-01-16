@@ -16,11 +16,11 @@
 	
 ?>
 <div name="adminarea" class="small-10 small-offset-1 columns" style="margin-bottom:10;">
-	<?php
-		echo "<div data-alert class=\"alert-box info radius\">";
-		echo "Welcome, " . strtoupper($session->user_id);
-		echo "</div>";
-	?>
+<?php
+	echo "<div data-alert class=\"alert-box info radius\">";
+	echo "Welcome, " . strtoupper($session->user_id);
+	echo "</div>";
+?>
 	<h2>Blog posts</h2>
 	<?php
 		if (isset($_SESSION["success_message"])) {
@@ -62,3 +62,6 @@
 		}
 	?>
 </div>
+<?php
+	include_layout_template("footer.php");
+?>

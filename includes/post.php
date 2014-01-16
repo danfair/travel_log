@@ -1,5 +1,7 @@
 <?php
+
 require_once(LIB_PATH . DS . "database.php");
+
 class Post extends DatabaseObject {
 	
 	public $title;
@@ -67,7 +69,6 @@ class Post extends DatabaseObject {
 			$post->post_id = $row["post_id"];
 			$posts[] = $post;
 		}
-
 		return $posts;
 	}
 
@@ -123,6 +124,5 @@ class Post extends DatabaseObject {
 		return $row["post_id"];
 	}
 }
-
 
 ?>

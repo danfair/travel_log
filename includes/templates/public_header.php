@@ -25,20 +25,21 @@
 			<h1><a href="#">TraveLog</a></h1> 
 		</li> 
 	</ul> 
-	<section class="top-bar-section"> <!-- Right Nav Section --> 
+	<section class="top-bar-section">
 		<ul class="left"> 
 		<?php 
 			$result = MenuItem::get_menu_items();
-				while ($row = mysqli_fetch_assoc($result)) {
-					$menu_item = new MenuItem($row);
-					echo "<li><a href=\"" . $menu_item->get_link() . "\">";
-					echo $menu_item->get_name();
-					echo "</a></li>";
-				}
-		if ($session->is_logged_in()) {
-			echo "<li><a href=\"admin.php\"><span style=\"color:orange\"><strong>Admin area</strong></span></a></li>";
-			echo "<li><a href=\"logout.php\"><span style=\"color:orange\"><strong>Logout</strong></span></a></li>";
-		}
+			while ($row = mysqli_fetch_assoc($result)) {
+				$menu_item = new MenuItem($row);
+				echo "<li><a href=\"" . $menu_item->get_link() . "\">";
+				echo $menu_item->get_name();
+				echo "</a></li>";
+			}
+			
+			if ($session->is_logged_in()) {
+				echo "<li><a href=\"admin.php\"><span style=\"color:orange\"><strong>Admin area</strong></span></a></li>";
+				echo "<li><a href=\"logout.php\"><span style=\"color:orange\"><strong>Logout</strong></span></a></li>";
+			}
 		?>
 		</ul>
 	</section> 

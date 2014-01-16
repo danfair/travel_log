@@ -1,5 +1,7 @@
 <?php
+
 require_once(LIB_PATH . DS . "database.php");
+
 class Category extends DatabaseObject {
 	
 	public $name;

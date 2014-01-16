@@ -1,6 +1,7 @@
 <?php
 
 require_once(LIB_PATH . DS . "database.php");
+
 class Photograph extends DatabaseObject {
 	
 	public $id;
@@ -9,7 +10,6 @@ class Photograph extends DatabaseObject {
 	public $size;
 	public $caption;
 	public $post_id;
-
 	private $temp_path;
 	protected $upload_dir = "img";
 	public $errors = array();
@@ -30,13 +30,6 @@ class Photograph extends DatabaseObject {
 			$this->type = $file["type"];
 			$this->size = $file["size"];
 			return true;
-		}
-
-	}
-
-	public function save() {
-		if (isset($this->id)) {
-
 		}
 	}
 
@@ -74,8 +67,6 @@ class Photograph extends DatabaseObject {
 			die("Did not add post, database error.");
 		}
 	}
-
 }
-
 
 ?>

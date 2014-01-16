@@ -34,3 +34,6 @@
 	echo "<div><p>" . $post->content . "</p></div>";
 ?>
 </div><!-- end of postarea div-->
+<?php
+	include_layout_template("footer.php");
+?>

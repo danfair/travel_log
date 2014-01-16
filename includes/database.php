@@ -9,14 +9,14 @@ class MySQLDatabase {
 
 	private $connection;
 
-	function __construct() {
+	public function __construct() {
 		$this->connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 		if (!$this->connection) {
 			die("Sorry, there was a database error.");
 		}
 	}
 
-	function close_connection() {
+	public function close_connection() {
 		if (isset($this->connection)) {
 			mysqli_close($this->connection);
 			unset($this->connection);

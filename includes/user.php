@@ -54,7 +54,6 @@ class User extends DatabaseObject{
 
 		return $user_id;
 	}
-
 }
 
 ?>

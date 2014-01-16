@@ -1,16 +1,21 @@
-<?php
+<?php	
 	require_once("../includes/initialize.php");
 	include_layout_template("public_header.php");
-?>
-<div class="small-8 columns small-offset-2">
-<h2>Add a post</h2>
-<?php
-	if (!empty($_SESSION["error_message"])) {
-		echo "<p style=\"color:red\">" . $_SESSION["error_message"] . "</p>";
-		unset($_SESSION["error_message"]);
+
+	if (!$session->is_logged_in()) {
+	$_SESSION["error_message"] = "You must login to view that page.";
+	redirect_to("login.php");
 	}
 ?>
-<form action="process_post.php" enctype="multipart/form-data" method="post">
+<div class="small-8 columns small-offset-2">
+	<h2>Add a post</h2>
+	<?php
+		if (!empty($_SESSION["error_message"])) {
+			echo "<p style=\"color:red\">" . $_SESSION["error_message"] . "</p>";
+			unset($_SESSION["error_message"]);
+		}
+	?>
+	<form action="process_post.php" enctype="multipart/form-data" method="post">
 		<div class="row">
 			<div class="small-12 columns">
 				<label for="title">Title of Post: </label>
@@ -65,3 +70,6 @@
 		</div>
 	</form>
 </div>
+<?php
+	include_layout_template("footer.php");
+?>
